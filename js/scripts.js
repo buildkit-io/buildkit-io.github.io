@@ -60,6 +60,12 @@
     submitSuccess: function($form, event) {
       event.preventDefault(); // prevent default submit behaviour
       $.ajax({
+        url: "https://formspree.io/hi@buildkit.io",
+        type: "POST",
+        data: {
+          email: $("input#subscribe").val()
+        },
+        dataType: "json",
         success: function() {
           $('#subscribe-success').html("<div class='alert alert-success'>");
           $('#subscribe-success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
@@ -69,7 +75,7 @@
           $('#subscribe-success > .alert-success')
             .append('</div>');
         }
-      })
+      });
 
     }
   });
@@ -91,13 +97,14 @@
         firstName = name.split(' ').slice(0, -1).join(' ');
       }
       $.ajax({
-        url: "././mail/contact_me.php",
+        url: "https://formspree.io/hi@buildkit.io",
         type: "POST",
         data: {
           name: name,
           email: email,
           message: message
         },
+        dataType: "json",
         cache: false,
         success: function() {
           // Success message
